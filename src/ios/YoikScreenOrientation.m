@@ -72,7 +72,7 @@
         // SEE https://github.com/Adlotto/cordova-plugin-recheck-screen-orientation
         // HACK: Force rotate by changing the view hierarchy.
 		ForcedViewController *vc = [[ForcedViewController alloc] init];
-        vc.supportedInterfaceOrientations = orientationIn;
+        vc.calledWith = orientationIn;
 
         // backgound should be transparent as it is briefly visible
         // prior to closing.
@@ -112,11 +112,13 @@
 
 - (UIInterfaceOrientationMask) supportedInterfaceOrientations
 {
-    // if ([self.calledWith rangeOfString:@"portrait"].location != NSNotFound) {
-    //     return UIInterfaceOrientationMaskPortrait;
-    // } else if([self.calledWith rangeOfString:@"landscape"].location != NSNotFound) {
-    //     return UIInterfaceOrientationMaskLandscape;
-    // }
-    return UIInterfaceOrientationMaskLandscape;
+    if ([self.calledWith rangeOfString:@"portrait"].location != NSNotFound) {
+        return UIInterfaceOrientationMaskPortrait;
+    } else if([self.calledWith rangeOfString:@"landscape"].location != NSNotFound) {
+        return UIInterfaceOrientationMaskLandscape;
+    }
+
+    NSLog(@"supportedInterfaceOrientations=>");
+    return UIInterfaceOrientationMaskAll;
 }
 @end
