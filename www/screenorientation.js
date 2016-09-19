@@ -74,12 +74,14 @@ function orientationChange() {
              orientation = 'portrait-primary';
              break;
         case 90:
+            return;
             orientation = 'landscape-primary';
             break;
         case 180:
             orientation = 'portrait-secondary';
             break;
         case -90:
+            return;
             orientation = 'landscape-secondary';
             break;
         default:

@@ -99,15 +99,8 @@
 -(void) viewDidAppear:(BOOL)animated {
 	CDVViewController *presenter = (CDVViewController*)self.presentingViewController;
 	
-	if ([self.calledWith rangeOfString:@"portrait"].location != NSNotFound) {
-		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationPortrait]]];
-
-	} else if([self.calledWith rangeOfString:@"landscape"].location != NSNotFound) {
-		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft], [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight]]];
-	} else {
-		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft], [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight], [NSNumber numberWithInt:UIInterfaceOrientationPortrait]]];
-	}
-	[presenter dismissViewControllerAnimated:NO completion:nil];
+    [presenter dismissViewControllerAnimated:NO completion:nil];
+	return UIInterfaceOrientationMaskLandscape;
 }
 
 - (UIInterfaceOrientationMask) supportedInterfaceOrientations
