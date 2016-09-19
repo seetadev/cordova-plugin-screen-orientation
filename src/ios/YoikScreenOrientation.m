@@ -108,6 +108,7 @@
 		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft], [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight], [NSNumber numberWithInt:UIInterfaceOrientationPortrait]]];
 	}
 	[presenter dismissViewControllerAnimated:NO completion:nil];
+    return UIInterfaceOrientationMaskLandscape;
 }
 
 - (UIInterfaceOrientationMask) supportedInterfaceOrientations
