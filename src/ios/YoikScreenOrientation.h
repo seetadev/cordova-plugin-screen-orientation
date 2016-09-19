@@ -31,6 +31,6 @@
 
 @interface ForcedViewController : UIViewController
 
-@property(nonatomic, readonly) UIInterfaceOrientationMask supportedInterfaceOrientations;
+@property (strong, nonatomic) NSString *calledWith;		
 
 @end
