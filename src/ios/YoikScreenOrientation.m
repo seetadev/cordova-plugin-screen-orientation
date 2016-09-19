@@ -50,8 +50,14 @@
             case UIDeviceOrientationLandscapeRight:
                 orientation = @"landscape-primary";
                 break;
+            case UIDeviceOrientationPortrait:
+                orientation = @"portrait-primary";
+                break;
+            case UIDeviceOrientationPortraitUpsideDown:
+                orientation = @"portrait-secondary";
+                break;
             default:
-                orientation = @"landscape";
+                orientation = @"portait";
                 break;
         }
 
