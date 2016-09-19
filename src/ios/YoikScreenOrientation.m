@@ -72,7 +72,6 @@
         // SEE https://github.com/Adlotto/cordova-plugin-recheck-screen-orientation
         // HACK: Force rotate by changing the view hierarchy.
 		ForcedViewController *vc = [[ForcedViewController alloc] init];
-        vc.calledWith = orientationIn;
 
         // backgound should be transparent as it is briefly visible
         // prior to closing.
