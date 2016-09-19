@@ -105,7 +105,7 @@
 	} else if([self.calledWith rangeOfString:@"landscape"].location != NSNotFound) {
 		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationMaskLandscapeLeft], [NSNumber numberWithInt:UIInterfaceOrientationMaskLandscapeRight]]];
 	} else {
-		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationMaskLandscapeLeft], [NSNumber numberWithInt:UIInterfaceOrientationMaskLandscapeRight], [NSNumber numberWithInt:UIInterfaceOrientationPortrait]]];
+		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationMaskLandscapeLeft], [NSNumber numberWithInt:UIInterfaceOrientationMaskLandscapeRight], [NSNumber numberWithInt:UIInterfaceOrientationMaskPortrait]]];
 	}
 	[presenter dismissViewControllerAnimated:NO completion:nil];
 }
