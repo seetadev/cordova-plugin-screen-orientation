@@ -109,6 +109,8 @@
 	}
 	[presenter dismissViewControllerAnimated:NO completion:nil];
     NSLog(@"viewDidAppear");
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
 
 }
 
