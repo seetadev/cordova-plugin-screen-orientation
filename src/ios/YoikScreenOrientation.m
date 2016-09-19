@@ -72,6 +72,7 @@
         // SEE https://github.com/Adlotto/cordova-plugin-recheck-screen-orientation
         // HACK: Force rotate by changing the view hierarchy.
 		ForcedViewController *vc = [[ForcedViewController alloc] init];
+        vc.calledWith = orientationIn;
 
         // backgound should be transparent as it is briefly visible
         // prior to closing.
@@ -96,17 +97,28 @@
 @implementation ForcedViewController
 
 -(void) viewDidAppear:(BOOL)animated {
-	NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
-    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+	CDVViewController *presenter = (CDVViewController*)self.presentingViewController;
+	
+	if ([self.calledWith rangeOfString:@"portrait"].location != NSNotFound) {
+		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationPortrait]]];
+
+	} else if([self.calledWith rangeOfString:@"landscape"].location != NSNotFound) {
+		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft], [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight]]];
+	} else {
+		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft], [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight], [NSNumber numberWithInt:UIInterfaceOrientationPortrait]]];
+	}
+	[presenter dismissViewControllerAnimated:NO completion:nil];
+    NSLog(@"viewDidAppear");
+
 }
 
 - (UIInterfaceOrientationMask) supportedInterfaceOrientations
 {
-    // if ([self.calledWith rangeOfString:@"portrait"].location != NSNotFound) {
-    //     return UIInterfaceOrientationMaskPortrait;
-    // } else if([self.calledWith rangeOfString:@"landscape"].location != NSNotFound) {
-    //     return UIInterfaceOrientationMaskLandscape;
-    // }
+    if ([self.calledWith rangeOfString:@"portrait"].location != NSNotFound) {
+        return UIInterfaceOrientationMaskPortrait;
+    } else if([self.calledWith rangeOfString:@"landscape"].location != NSNotFound) {
+        return UIInterfaceOrientationMaskLandscape;
+    }
 
     NSLog(@"supportedInterfaceOrientations=>");
     return UIInterfaceOrientationMaskLandscape;
