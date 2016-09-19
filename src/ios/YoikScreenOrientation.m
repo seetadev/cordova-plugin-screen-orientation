@@ -61,6 +61,8 @@
                 break;
         }
 
+        NSLog(@"orientation=> %@", orientation);
+
         // we send the result prior to the view controller presentation so that the JS side
         // is ready for the unlock call.
         CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
@@ -101,9 +103,9 @@
 		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationPortrait]]];
 
 	} else if([self.calledWith rangeOfString:@"landscape"].location != NSNotFound) {
-		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft], [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight]]];
+		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationMaskLandscapeLeft], [NSNumber numberWithInt:UIInterfaceOrientationMaskLandscapeRight]]];
 	} else {
-		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft], [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight], [NSNumber numberWithInt:UIInterfaceOrientationPortrait]]];
+		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationMaskLandscapeLeft], [NSNumber numberWithInt:UIInterfaceOrientationMaskLandscapeRight], [NSNumber numberWithInt:UIInterfaceOrientationPortrait]]];
 	}
 	[presenter dismissViewControllerAnimated:NO completion:nil];
 }

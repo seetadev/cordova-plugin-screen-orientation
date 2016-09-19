@@ -86,6 +86,8 @@ function orientationChange() {
             orientation = 'unknown';
     }
 
+    console.log("orientation change =>" +orientation);
+
     screen.orientation = orientation;
 }
 

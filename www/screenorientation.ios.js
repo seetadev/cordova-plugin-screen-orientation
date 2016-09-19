@@ -27,10 +27,12 @@ var exec = require('cordova/exec'),
         'portrait-primary': [0],
         'portrait-secondary': [180],
         'landscape': [-90,90],
-        'landscape-primary': [90],
-        'landscape-secondary': [-90],
+        'landscape-primary': [-90],
+        'landscape-secondary': [90],
         'default': [-90,90,0,180]
     };
+
+console.log(orientationMap);
 
 screenOrientation.setOrientation = function(orientation) {
     iosOrientation = orientation;
