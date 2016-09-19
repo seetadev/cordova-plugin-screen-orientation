@@ -112,11 +112,11 @@
 
 - (UIInterfaceOrientationMask) supportedInterfaceOrientations
 {
-    if ([self.calledWith rangeOfString:@"portrait"].location != NSNotFound) {
-        return UIInterfaceOrientationMaskPortrait;
-    } else if([self.calledWith rangeOfString:@"landscape"].location != NSNotFound) {
-        return UIInterfaceOrientationMaskLandscape;
-    }
-    return UIInterfaceOrientationMaskAll;
+    // if ([self.calledWith rangeOfString:@"portrait"].location != NSNotFound) {
+    //     return UIInterfaceOrientationMaskPortrait;
+    // } else if([self.calledWith rangeOfString:@"landscape"].location != NSNotFound) {
+    //     return UIInterfaceOrientationMaskLandscape;
+    // }
+    return UIInterfaceOrientationMaskLandscape;
 }
 @end
