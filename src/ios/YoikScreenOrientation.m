@@ -97,29 +97,19 @@
 @implementation ForcedViewController
 
 -(void) viewDidAppear:(BOOL)animated {
-	CDVViewController *presenter = (CDVViewController*)self.presentingViewController;
-	
-	if ([self.calledWith rangeOfString:@"portrait"].location != NSNotFound) {
-		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationPortrait]]];
-
-	} else if([self.calledWith rangeOfString:@"landscape"].location != NSNotFound) {
-		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft], [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight]]];
-	} else {
-		[presenter updateSupportedOrientations:@[[NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft], [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight], [NSNumber numberWithInt:UIInterfaceOrientationPortrait]]];
-	}
-	[presenter dismissViewControllerAnimated:NO completion:nil];
-    return UIInterfaceOrientationMaskLandscape;
+	NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
 }
 
 - (UIInterfaceOrientationMask) supportedInterfaceOrientations
 {
-    if ([self.calledWith rangeOfString:@"portrait"].location != NSNotFound) {
-        return UIInterfaceOrientationMaskPortrait;
-    } else if([self.calledWith rangeOfString:@"landscape"].location != NSNotFound) {
-        return UIInterfaceOrientationMaskLandscape;
-    }
+    // if ([self.calledWith rangeOfString:@"portrait"].location != NSNotFound) {
+    //     return UIInterfaceOrientationMaskPortrait;
+    // } else if([self.calledWith rangeOfString:@"landscape"].location != NSNotFound) {
+    //     return UIInterfaceOrientationMaskLandscape;
+    // }
 
     NSLog(@"supportedInterfaceOrientations=>");
-    return UIInterfaceOrientationMaskAll;
+    return UIInterfaceOrientationMaskLandscape;
 }
 @end
